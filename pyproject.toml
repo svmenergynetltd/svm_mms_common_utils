@@ -11,4 +11,4 @@ version = { attr = "svm_mms_common_utils.__version__" }
 dependencies = { file = ["requirements.txt"] }
 
 [tool.setuptools.packages.find]
-where = ["svm_mms_common_utils"]
+where = ["."]
