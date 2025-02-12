@@ -1,7 +1,3 @@
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "svm_mms_common_utils"
 description = "Common utilities for SVM MMS applications"
@@ -13,3 +9,6 @@ requires-python = ">=3.8"
 [tool.setuptools.dynamic]
 version = { attr = "svm_mms_common_utils.__version__" }
 dependencies = { file = ["requirements.txt"] }
+
+[tool.setuptools.packages.find]
+where = ["svm_mms_common_utils"]
