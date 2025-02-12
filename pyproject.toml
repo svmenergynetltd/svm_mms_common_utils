@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "svm_mms_common_utils"
+description = "Common utilities for SVM MMS applications"
+authors = [{ name = "Konstantinos A.", email = "konstantinos.a@svmenergy.net" }]
+readme = "README.md"
+dynamic = ["version", "dependencies"]
+requires-python = ">=3.8"
+
+[tool.setuptools.dynamic]
+version = { attr = "svm_mms_common_utils.__version__" }
+dependencies = { file = ["requirements.txt"] }
