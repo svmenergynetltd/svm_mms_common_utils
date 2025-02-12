@@ -1,0 +1,8 @@
+class MMS_CONSTANTS:
+    # Common constants
+    MAX_MRID_LENGTH = 35
+    DECIMALS = 3
+
+    # Common UUIDs
+    TSOC_UUID = "10X1001A1001A523"
+    DOMAIN_M_RID = "10YCY-1001A0003J"
