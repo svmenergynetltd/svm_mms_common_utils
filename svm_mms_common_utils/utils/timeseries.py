@@ -20,7 +20,14 @@ class TimeSeriesUtils:
             if key not in series[0]:
                 raise ValueError(f"Keys {keys} not found in series.")
             series = [
-                {**point, key: round(point[key], MMS_CONSTANTS.DECIMALS) if point[key] else None}
+                {
+                    **point,
+                    key: (
+                        round(point[key], MMS_CONSTANTS.DECIMALS)
+                        if point[key] is not None
+                        else None
+                    ),
+                }
                 for point in series
             ]
 
@@ -41,7 +48,15 @@ class TimeSeriesUtils:
 
         conversionFactor = TimeSeriesUtils.get_conversion_factor(initUnit, targetUnit)
 
-        return [{**point, valueKey: point[valueKey] * conversionFactor} for point in series]
+        return [
+            {
+                **point,
+                valueKey: (
+                    point[valueKey] * conversionFactor if point[valueKey] is not None else None
+                ),
+            }
+            for point in series
+        ]
 
     @staticmethod
     def get_start_end_dates(series: List[dict[str, any]], key="timestamp") -> tuple[str, str]:
