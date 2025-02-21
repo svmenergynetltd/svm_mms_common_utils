@@ -79,7 +79,9 @@ class DateUtils:
             dt.datetime: The datetime object.
         """
         dateUtc = dt.datetime.strptime(date, format)
-        return pytz.timezone("Europe/Athens").localize(dateUtc)
+        # set the timezone to UTC
+        dateUtc = dateUtc.replace(tzinfo=dt.timezone.utc)
+        return dateUtc.astimezone(pytz.timezone("Europe/Athens"))
 
     def getUTCDateTime():
         """
