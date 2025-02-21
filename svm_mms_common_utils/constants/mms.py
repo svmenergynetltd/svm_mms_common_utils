@@ -2,6 +2,7 @@ class MMS_CONSTANTS:
     # Common constants
     MAX_MRID_LENGTH = 35
     DECIMALS = 3
+    PRICE_DECIMALS = 2
 
     # Common UUIDs
     TSOC_UUID = "10X1001A1001A523"
