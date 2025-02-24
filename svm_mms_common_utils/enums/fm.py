@@ -1,18 +1,21 @@
 from enum import Enum
 
+class BaseEnum(str, Enum):
+    def __get__(self, instance, owner):
+        return self.value
 
-class NominationType(str, Enum):
+class NominationType(BaseEnum):
     OFFTAKE = "OFFTAKE"
     DELIVERY = "DELIVERY"
 
 
-class DamBidsOffersTypes(str, Enum):
+class DamBidsOffersTypes(BaseEnum):
     SIMPLE_BIDS = "SIMPLE_BIDS"
     SIMPLE_OFFER = "SIMPLE_OFFER"
     BLOCK_OFFER = "BLOCK_OFFER"
 
 
-class ContractStatus(str, Enum):
+class ContractStatus(BaseEnum):
     PENDING = "PENDING"
     ACKNOWLEDGED = "ACKNOWLEDGED"
     CONFIRMED = "CONFIRMED"
