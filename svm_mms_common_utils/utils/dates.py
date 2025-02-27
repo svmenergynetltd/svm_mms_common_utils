@@ -63,8 +63,8 @@ class DateUtils:
         Author: Konstantinos A.
         Date: 28 Jan 2025
         """
-        if initialTz:
-            date = date.replace(tzinfo=pytz.timezone("Europe/Athens"))
+        if initialTz and date.tzinfo is None:
+            date = pytz.timezone("Europe/Athens").localize(date)
         dateFmt = "%Y-%m-%dT%H:%MZ" if not includeSeconds else "%Y-%m-%dT%H:%M:%SZ"
         return date.astimezone(dt.timezone.utc).strftime(dateFmt)
 
