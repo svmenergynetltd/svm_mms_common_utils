@@ -92,4 +92,4 @@ class SQL_Query:
         values = [f"{col} = '{val}'" for col, val in self.valuesToInsert[0].items()]
         filters = " AND ".join([f"{where['column']} = '{where['value']}'" for where in self.where])
 
-        return f"UPDATE {self.tableName} SET {", ".join(values)} WHERE {filters}"
+        return f"UPDATE {self.tableName} SET {', '.join(values)} WHERE {filters}"
