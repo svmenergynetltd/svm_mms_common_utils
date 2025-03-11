@@ -74,7 +74,7 @@ class SQL_Query:
             for column in self.columns:
                 if column not in valDict:
                     continue
-                valArr.append(f"'{valDict[column]}'")
+                valArr.append(f"'{valDict[column]}'" if valDict[column] is not None else "NULL")
             values = ", ".join(valArr)
             valuesArr.append(f"({values})")
 
