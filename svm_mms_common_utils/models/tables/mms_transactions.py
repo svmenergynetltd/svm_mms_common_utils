@@ -13,7 +13,7 @@ class MmsTransactions(BaseTableModel):
     status: str = TransactionStatus.PENDING
     databaseRowId: int = None
     databaseTableName: str = None
-    marketDay: dt.datetime = None
+    marketDay: dt.date = None
     xmlFile: str = None
     sentXml: str = None
     receivedXml: str = None
