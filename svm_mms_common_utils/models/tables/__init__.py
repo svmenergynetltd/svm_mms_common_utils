@@ -13,6 +13,8 @@ from .mms_transactions import MmsTransactions
 
 
 __all__ = [
+    "MmsForwardContract",
+    "MmsPhysicalNomination",
     "MmsDamClearedEnergy",
     "MmsDamClearingPrices",
     "MmsDamFcastedClearingPrices",
