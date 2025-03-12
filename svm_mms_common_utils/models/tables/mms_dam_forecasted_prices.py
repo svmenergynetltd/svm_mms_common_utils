@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import json
 from .baseTableModel import BaseTableModel
 
 
@@ -7,7 +8,7 @@ class MmsDamFcastedClearingPrices(BaseTableModel):
     __tablename__ = "MMS_DAM_FORECASTED_CLEARING_PRICES"
 
     dayTimestamp: str
-    forecastedClearingPrices: str
+    forecastedClearingPrices: list[dict[str, str | float | None]]
 
     @classmethod
     def from_db(cls, data: dict):
@@ -19,5 +20,5 @@ class MmsDamFcastedClearingPrices(BaseTableModel):
     def to_db(self):
         return {
             "dayTimestamp": self.dayTimestamp,
-            "forecastedClearingPrices": self.forecastedClearingPrices,
+            "forecastedClearingPrices": json.dumps(self.forecastedClearingPrices),
         }

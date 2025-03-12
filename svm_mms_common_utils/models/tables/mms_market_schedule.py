@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import json
 from .baseTableModel import BaseTableModel
 
 
@@ -9,7 +10,7 @@ class MmsMarketSchedule(BaseTableModel):
     resourceId: int
     dayTimestamp: str
     totalScheduledEnergy: float
-    marketSchedule: str
+    marketSchedule: list[dict[str, str | float | None]]
 
     @classmethod
     def from_db(cls, data: dict):
@@ -25,5 +26,5 @@ class MmsMarketSchedule(BaseTableModel):
             "resourceId": self.resourceId,
             "dayTimestamp": self.dayTimestamp,
             "totalScheduledEnergy": round(self.totalScheduledEnergy, 3),
-            "marketSchedule": self.marketSchedule,
+            "marketSchedule": json.dumps(self.marketSchedule),
         }

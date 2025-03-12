@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import datetime as dt
+import json
 from svm_mms_common_utils.enums import ContractStatus
 
 
@@ -10,7 +11,7 @@ class MmsForwardContract:
     outParticipantId: int
     marketAgreementMRID: str
     dayTimestamp: dt.date
-    forwardContract: str
+    forwardContract: list[dict[str, str | float | None]]
     totalDayEnergy: float
     status: ContractStatus
     createdBy: str
@@ -22,7 +23,7 @@ class MmsForwardContract:
             "outParticipantId": self.outParticipantId,
             "marketAgreementMRID": self.marketAgreementMRID,
             "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d"),
-            "forwardContract": self.forwardContract,
+            "forwardContract": json.dumps(self.forwardContract),
             "totalDayEnergy": round(self.totalDayEnergy, 3),
             "status": self.status,
             "createdBy": self.createdBy,

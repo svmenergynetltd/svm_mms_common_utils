@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import datetime as dt
+import json
 from svm_mms_common_utils.enums import DamBidsOffersTypes
 
 
@@ -10,7 +11,7 @@ class MmsDamBidsOffers:
     dayTimestamp: dt.date
     businessType: DamBidsOffersTypes
     totalQuantity: float
-    bidsAndOffers: str
+    bidsAndOffers: list[dict[str, str | float | None]]
     createdBy: str
 
     def to_db(self):
@@ -20,7 +21,7 @@ class MmsDamBidsOffers:
             "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
             "businessType": self.businessType,
             "totalQuantity": round(self.totalQuantity, 3),
-            "bidsAndOffers": self.bidsAndOffers,
+            "bidsAndOffers": json.dumps(self.bidsAndOffers),
             "createdBy": self.createdBy,
         }
 
