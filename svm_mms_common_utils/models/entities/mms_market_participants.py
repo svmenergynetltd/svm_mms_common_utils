@@ -27,8 +27,10 @@ class MarketParticipant:
             "fmStrategy": self.fmStrategy,
             "managedBy": self.managedBy,
             "mmsId": self.mmsId,
-            "dateAdded": self.dateAdded.strftime("%Y-%m-%d %H:%M:%S"),
-            "dateModified": self.dateModified.strftime("%Y-%m-%d %H:%M:%S"),
+            "dateAdded": self.dateAdded.strftime("%Y-%m-%d %H:%M:%S") if self.dateAdded else None,
+            "dateModified": (
+                self.dateModified.strftime("%Y-%m-%d %H:%M:%S") if self.dateModified else None
+            ),
             "isActive": 1 if self.isActive else 0,
         }
 
@@ -43,7 +45,7 @@ class MarketParticipant:
             fmStrategy=data["fmStrategy"],
             managedBy=data["managedBy"],
             mmsId=data["mmsId"],
-            dateAdded=dt.datetime.strptime(data["dateAdded"], "%Y-%m-%d %H:%M:%S"),
-            dateModified=dt.datetime.strptime(data["dateModified"], "%Y-%m-%d %H:%M:%S"),
+            dateAdded=data["dateAdded"],
+            dateModified=data["dateModified"],
             isActive=True if data["isActive"] else False,
         )

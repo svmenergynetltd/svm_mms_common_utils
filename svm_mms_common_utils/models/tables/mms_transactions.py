@@ -53,24 +53,12 @@ class MmsTransactions(BaseTableModel):
             status=TransactionStatus[data["status"]],
             databaseRowId=data["databaseRowId"],
             databaseTableName=data["databaseTableName"],
-            marketDay=(
-                dt.datetime.strptime(data["marketDay"], "%Y-%m-%d").date()
-                if data["marketDay"]
-                else None
-            ),
+            marketDay=data["marketDay"],
             xmlFile=data["xmlFile"],
             sentXml=data["sentXml"],
             receivedXml=data["receivedXml"],
-            dateSent=(
-                dt.datetime.strptime(data["dateSent"], "%Y-%m-%d %H:%M:%S")
-                if data["dateSent"]
-                else None
-            ),
-            dateReceived=(
-                dt.datetime.strptime(data["dateReceived"], "%Y-%m-%d %H:%M:%S")
-                if data["dateReceived"]
-                else None
-            ),
+            dateSent=data["dateSent"],
+            dateReceived=data["dateReceived"],
             mmsFileInterface=data["mmsFileInterface"],
             xmlFileInterface=data["xmlFileInterface"],
             participantId=data["participantId"],

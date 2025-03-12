@@ -17,7 +17,7 @@ class MmsDamBidsOffers:
         return {
             "id": self.id,
             "resourceId": self.resourceId,
-            "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d"),
+            "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
             "businessType": self.businessType,
             "totalQuantity": round(self.totalQuantity, 3),
             "bidsAndOffers": self.bidsAndOffers,
@@ -29,7 +29,7 @@ class MmsDamBidsOffers:
         return cls(
             id=data["id"],
             resourceId=data["resourceId"],
-            dayTimestamp=dt.datetime.strptime(data["dayTimestamp"], "%Y-%m-%d").date(),
+            dayTimestamp=data["dayTimestamp"],
             businessType=DamBidsOffersTypes[data["businessType"]],
             totalQuantity=data["totalQuantity"],
             bidsAndOffers=data["bidsAndOffers"],

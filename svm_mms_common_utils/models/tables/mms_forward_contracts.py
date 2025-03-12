@@ -35,7 +35,7 @@ class MmsForwardContract:
             inParticipantId=data["inParticipantId"],
             outParticipantId=data["outParticipantId"],
             marketAgreementMRID=data["marketAgreementMRID"],
-            dayTimestamp=dt.datetime.strptime(data["dayTimestamp"], "%Y-%m-%d").date(),
+            dayTimestamp=data["dayTimestamp"],
             forwardContract=data["forwardContract"],
             totalDayEnergy=data["totalDayEnergy"],
             status=ContractStatus[data["status"]],

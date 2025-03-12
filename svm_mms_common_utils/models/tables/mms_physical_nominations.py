@@ -16,7 +16,7 @@ class MmsPhysicalNomination:
     def to_db(self):
         return {
             "id": self.id,
-            "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d"),
+            "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
             "resourceId": self.resourceId,
             "nomination": self.nomination,
             "totalDayEnergy": round(self.totalDayEnergy, 3),
@@ -28,7 +28,7 @@ class MmsPhysicalNomination:
     def from_db(cls, data: dict):
         return cls(
             id=data["id"],
-            dayTimestamp=dt.datetime.strptime(data["dayTimestamp"], "%Y-%m-%d").date(),
+            dayTimestamp=data["dayTimestamp"],
             resourceId=data["resourceId"],
             nomination=data["nomination"],
             totalDayEnergy=data["totalDayEnergy"],
