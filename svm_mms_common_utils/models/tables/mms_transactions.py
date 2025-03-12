@@ -50,7 +50,7 @@ class MmsTransactions(BaseTableModel):
         return cls(
             mRID=data["mRID"],
             revision=data["revision"],
-            status=data["status"],
+            status=TransactionStatus[data["status"]],
             databaseRowId=data["databaseRowId"],
             databaseTableName=data["databaseTableName"],
             marketDay=(
