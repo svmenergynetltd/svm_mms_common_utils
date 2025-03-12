@@ -13,6 +13,7 @@ class MmsTransactions(BaseTableModel):
     status: str = TransactionStatus.PENDING
     databaseRowId: int = None
     databaseTableName: str = None
+    marketDay: dt.datetime = None
     xmlFile: str = None
     sentXml: str = None
     receivedXml: str = None
@@ -30,6 +31,7 @@ class MmsTransactions(BaseTableModel):
             "status": self.status,
             "databaseRowId": self.databaseRowId,
             "databaseTableName": self.databaseTableName,
+            "marketDay": self.marketDay.strftime("%Y-%m-%d") if self.marketDay else None,
             "xmlFile": self.xmlFile,
             "sentXml": self.sentXml,
             "receivedXml": self.receivedXml,
@@ -51,6 +53,11 @@ class MmsTransactions(BaseTableModel):
             status=data["status"],
             databaseRowId=data["databaseRowId"],
             databaseTableName=data["databaseTableName"],
+            marketDay=(
+                dt.datetime.strptime(data["marketDay"], "%Y-%m-%d").date()
+                if data["marketDay"]
+                else None
+            ),
             xmlFile=data["xmlFile"],
             sentXml=data["sentXml"],
             receivedXml=data["receivedXml"],
