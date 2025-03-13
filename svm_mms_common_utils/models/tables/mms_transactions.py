@@ -26,8 +26,6 @@ class MmsTransactions(BaseTableModel):
     dateSent: dt.datetime = None
     dateReceived: dt.datetime = None
     timeSeries: list[dict] = None
-    mmsFileInterface: str = None
-    xmlFileInterface: str = None
 
     def to_db(self):
         return {
@@ -50,8 +48,6 @@ class MmsTransactions(BaseTableModel):
             "dateReceived": (
                 self.dateReceived.strftime("%Y-%m-%d %H:%M:%S") if self.dateReceived else None
             ),
-            "mmsFileInterface": self.mmsFileInterface,
-            "xmlFileInterface": self.xmlFileInterface,
             "participantId": self.participantId,
             "resourceObjectId": self.resourceObjectId,
             "timeSeries": json.dumps(self.timeSeries) if self.timeSeries else None,
@@ -74,8 +70,6 @@ class MmsTransactions(BaseTableModel):
             receivedXml=data["receivedXml"],
             dateSent=data["dateSent"],
             dateReceived=data["dateReceived"],
-            mmsFileInterface=data["mmsFileInterface"],
-            xmlFileInterface=data["xmlFileInterface"],
             participantId=data["participantId"],
             resourceObjectId=data["resourceObjectId"],
             timeSeries=json.loads(data["timeSeries"]) if data["timeSeries"] else None,
