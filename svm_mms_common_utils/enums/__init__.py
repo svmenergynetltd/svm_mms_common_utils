@@ -6,4 +6,4 @@ from .fm import NominationType, ContractStatus, DamBidsOffersTypes
 
 from .tsoc import TsocDocType, MridMarketAbbr
 
-from .misc import TransactionStatus
+from .transactions import TransactionStatus, TrxSubmissionType

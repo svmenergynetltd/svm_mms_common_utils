@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 import datetime as dt
-from ...enums import TransactionStatus
+from ...enums import TransactionStatus, TrxSubmissionType
 from .baseTableModel import BaseTableModel
 
 
@@ -10,7 +10,9 @@ class MmsTransactions(BaseTableModel):
 
     mRID: str = None
     revision: int = 1
-    status: str = TransactionStatus.PENDING
+    status: TransactionStatus = TransactionStatus.PENDING
+    submissionType: TrxSubmissionType = None
+    scheduledDateTime: dt.datetime = None
     databaseRowId: int = None
     databaseTableName: str = None
     marketDay: dt.date = None
@@ -29,6 +31,12 @@ class MmsTransactions(BaseTableModel):
             "mRID": self.mRID,
             "revision": self.revision,
             "status": self.status,
+            "submissionType": self.submissionType,
+            "scheduledDateTime": (
+                self.scheduledDateTime.strftime("%Y-%m-%d %H:%M:%S")
+                if self.scheduledDateTime
+                else None
+            ),
             "databaseRowId": self.databaseRowId,
             "databaseTableName": self.databaseTableName,
             "marketDay": self.marketDay.strftime("%Y-%m-%d") if self.marketDay else None,
@@ -51,6 +59,8 @@ class MmsTransactions(BaseTableModel):
             mRID=data["mRID"],
             revision=data["revision"],
             status=TransactionStatus[data["status"]],
+            submissionType=TrxSubmissionType[data["submissionType"]],
+            scheduledDateTime=data["scheduledDateTime"],
             databaseRowId=data["databaseRowId"],
             databaseTableName=data["databaseTableName"],
             marketDay=data["marketDay"],
