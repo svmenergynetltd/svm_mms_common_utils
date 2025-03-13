@@ -8,14 +8,15 @@ from .baseTableModel import BaseTableModel
 class MmsTransactions(BaseTableModel):
     __tablename__ = "MMS_TRANSACTIONS"
 
+    id: int
     mRID: str = None
     revision: int = 1
     status: TransactionStatus = TransactionStatus.PENDING
-    submissionType: TrxSubmissionType = None
+    submissionType: TrxSubmissionType
     scheduledDateTime: dt.datetime = None
     databaseRowId: int = None
     databaseTableName: str = None
-    marketDay: dt.date = None
+    marketDay: dt.date
     xmlFile: str = None
     sentXml: str = None
     receivedXml: str = None
@@ -23,8 +24,8 @@ class MmsTransactions(BaseTableModel):
     dateReceived: dt.datetime = None
     mmsFileInterface: str = None
     xmlFileInterface: str = None
-    participantId: int = None
-    resourceObjectId: int = None
+    participantId: int
+    resourceObjectId: int
 
     def to_db(self):
         return {
@@ -56,6 +57,7 @@ class MmsTransactions(BaseTableModel):
     @classmethod
     def from_db(cls, data: dict):
         return cls(
+            id=data["id"],
             mRID=data["mRID"],
             revision=data["revision"],
             status=TransactionStatus[data["status"]],
