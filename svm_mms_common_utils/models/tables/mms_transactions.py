@@ -9,14 +9,16 @@ class MmsTransactions(BaseTableModel):
     __tablename__ = "MMS_TRANSACTIONS"
 
     id: int
+    submissionType: TrxSubmissionType
+    participantId: int
+    resourceObjectId: int
+    marketDay: dt.date
+    scheduledDateTime: dt.datetime
+    status: TransactionStatus
     mRID: str = None
     revision: int = 1
-    status: TransactionStatus = TransactionStatus.PENDING
-    submissionType: TrxSubmissionType
-    scheduledDateTime: dt.datetime = None
     databaseRowId: int = None
     databaseTableName: str = None
-    marketDay: dt.date
     xmlFile: str = None
     sentXml: str = None
     receivedXml: str = None
@@ -24,8 +26,6 @@ class MmsTransactions(BaseTableModel):
     dateReceived: dt.datetime = None
     mmsFileInterface: str = None
     xmlFileInterface: str = None
-    participantId: int
-    resourceObjectId: int
 
     def to_db(self):
         return {
