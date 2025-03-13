@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import datetime as dt
+import json
 from ...enums import TransactionStatus, TrxSubmissionType
 from .baseTableModel import BaseTableModel
 
@@ -24,6 +25,7 @@ class MmsTransactions(BaseTableModel):
     receivedXml: str = None
     dateSent: dt.datetime = None
     dateReceived: dt.datetime = None
+    timeSeries: list[dict] = None
     mmsFileInterface: str = None
     xmlFileInterface: str = None
 
@@ -52,6 +54,7 @@ class MmsTransactions(BaseTableModel):
             "xmlFileInterface": self.xmlFileInterface,
             "participantId": self.participantId,
             "resourceObjectId": self.resourceObjectId,
+            "timeSeries": json.dumps(self.timeSeries) if self.timeSeries else None,
         }
 
     @classmethod
@@ -75,4 +78,5 @@ class MmsTransactions(BaseTableModel):
             xmlFileInterface=data["xmlFileInterface"],
             participantId=data["participantId"],
             resourceObjectId=data["resourceObjectId"],
+            timeSeries=json.loads(data["timeSeries"]) if data["timeSeries"] else None,
         )
