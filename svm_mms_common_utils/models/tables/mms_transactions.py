@@ -50,7 +50,7 @@ class MmsTransactions(BaseTableModel):
             ),
             "participantId": self.participantId,
             "resourceObjectId": self.resourceObjectId,
-            "timeSeries": json.dumps(self.timeSeries) if self.timeSeries else None,
+            "timeSeries": self.timeSeries,
         }
 
     @classmethod

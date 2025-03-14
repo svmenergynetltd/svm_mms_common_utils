@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 import datetime as dt
-import json
 from svm_mms_common_utils.enums import NominationType
 
 
@@ -19,7 +18,7 @@ class MmsPhysicalNomination:
             "id": self.id,
             "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
             "resourceId": self.resourceId,
-            "nomination": json.dumps(self.nomination),
+            "nomination": self.nomination,
             "totalDayEnergy": round(self.totalDayEnergy, 3),
             "energyFlow": self.energyFlow,
             "createdBy": self.createdBy,

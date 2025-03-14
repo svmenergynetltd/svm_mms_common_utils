@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-import json
 from .baseTableModel import BaseTableModel
 
 
@@ -20,5 +19,5 @@ class MmsDamFcastedClearingPrices(BaseTableModel):
     def to_db(self):
         return {
             "dayTimestamp": self.dayTimestamp,
-            "forecastedClearingPrices": json.dumps(self.forecastedClearingPrices),
+            "forecastedClearingPrices": self.forecastedClearingPrices,
         }

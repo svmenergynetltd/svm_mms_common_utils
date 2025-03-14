@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-import json
 from .baseTableModel import BaseTableModel
 
 
@@ -27,7 +26,7 @@ class MmsDamClearedEnergy(BaseTableModel):
         return {
             "resourceId": self.resourceId,
             "dayTimestamp": self.dayTimestamp,
-            "clearedEnergy": json.dumps(self.clearedEnergy),
+            "clearedEnergy": self.clearedEnergy,
             "totalBoughtEnergy": round(self.totalBoughtEnergy, 3),
             "totalSoldEnergy": round(self.totalSoldEnergy, 3),
         }

@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-import json
 from .baseTableModel import BaseTableModel
 
 
@@ -26,5 +25,5 @@ class MmsMarketSchedule(BaseTableModel):
             "resourceId": self.resourceId,
             "dayTimestamp": self.dayTimestamp,
             "totalScheduledEnergy": round(self.totalScheduledEnergy, 3),
-            "marketSchedule": json.dumps(self.marketSchedule),
+            "marketSchedule": self.marketSchedule,
         }
