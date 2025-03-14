@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 import datetime as dt
-import json
+
 from ...enums import TransactionStatus, TrxSubmissionType
 from .baseTableModel import BaseTableModel
 
@@ -72,5 +72,5 @@ class MmsTransactions(BaseTableModel):
             dateReceived=data["dateReceived"],
             participantId=data["participantId"],
             resourceObjectId=data["resourceObjectId"],
-            timeSeries=json.loads(data["timeSeries"]) if data["timeSeries"] else None,
+            timeSeries=data["timeSeries"],
         )
