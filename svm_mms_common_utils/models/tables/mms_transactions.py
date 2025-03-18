@@ -26,6 +26,7 @@ class MmsTransactions(BaseTableModel):
     dateSent: dt.datetime = None
     dateReceived: dt.datetime = None
     timeSeries: list[dict] = None
+    dateAdded: str = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     def to_db(self):
         return {
@@ -44,7 +45,7 @@ class MmsTransactions(BaseTableModel):
             "xmlFile": self.xmlFile,
             "sentXml": self.sentXml,
             "receivedXml": self.receivedXml,
-            "dateAdded": dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "dateAdded": self.dateAdded,
             "dateSent": self.dateSent.strftime("%Y-%m-%d %H:%M:%S") if self.dateSent else None,
             "dateReceived": (
                 self.dateReceived.strftime("%Y-%m-%d %H:%M:%S") if self.dateReceived else None
@@ -74,4 +75,5 @@ class MmsTransactions(BaseTableModel):
             participantId=data["participantId"],
             resourceObjectId=data["resourceObjectId"],
             timeSeries=data["timeSeries"],
+            dateAdded=data["dateAdded"],
         )
