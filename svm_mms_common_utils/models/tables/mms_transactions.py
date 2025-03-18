@@ -44,6 +44,7 @@ class MmsTransactions(BaseTableModel):
             "xmlFile": self.xmlFile,
             "sentXml": self.sentXml,
             "receivedXml": self.receivedXml,
+            "dateAdded": dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "dateSent": self.dateSent.strftime("%Y-%m-%d %H:%M:%S") if self.dateSent else None,
             "dateReceived": (
                 self.dateReceived.strftime("%Y-%m-%d %H:%M:%S") if self.dateReceived else None
