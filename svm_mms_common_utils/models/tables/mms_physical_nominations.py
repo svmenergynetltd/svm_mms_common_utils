@@ -1,10 +1,14 @@
 from dataclasses import dataclass
 import datetime as dt
+
+from .baseTableModel import BaseTableModel
 from svm_mms_common_utils.enums import NominationType
 
 
 @dataclass
-class MmsPhysicalNomination:
+class MmsPhysicalNomination(BaseTableModel):
+    __tablename__ = "MMS_PHYSICAL_NOMINATIONS"
+
     id: int
     dayTimestamp: dt.date
     resourceId: int

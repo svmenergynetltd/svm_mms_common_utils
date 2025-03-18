@@ -1,10 +1,13 @@
 from dataclasses import dataclass
 import datetime as dt
 from svm_mms_common_utils.enums import DamBidsOffersTypes
+from .baseTableModel import BaseTableModel
 
 
 @dataclass
-class MmsDamBidsOffers:
+class MmsDamBidsOffers(BaseTableModel):
+    __tablename__ = "MMS_DAM_BIDS_AND_OFFERS"
+
     id: int
     resourceId: int
     dayTimestamp: dt.date

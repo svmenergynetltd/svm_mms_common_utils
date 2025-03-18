@@ -1,10 +1,14 @@
 from dataclasses import dataclass
 import datetime as dt
+
+from .baseTableModel import BaseTableModel
 from svm_mms_common_utils.enums import ContractStatus
 
 
 @dataclass
-class MmsForwardContract:
+class MmsForwardContract(BaseTableModel):
+    __tablename__ = "MMS_FORWARD_CONTRACTS"
+
     id: int
     inParticipantId: int
     outParticipantId: int
