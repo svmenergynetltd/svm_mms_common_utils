@@ -1,3 +1,5 @@
+from .mms_resource_object_forecast import MmsResourceObjectForecast
+
 # FM
 from .mms_forward_contracts import MmsForwardContract
 from .mms_physical_nominations import MmsPhysicalNomination
