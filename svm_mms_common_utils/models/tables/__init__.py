@@ -17,6 +17,7 @@ from .mms_transactions import MmsTransactions
 
 
 __all__ = [
+    "MmsResourceObjectForecast",
     "MmsForwardContract",
     "MmsPhysicalNomination",
     "MmsDamBidsOffers",
