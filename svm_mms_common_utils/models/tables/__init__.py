@@ -10,6 +10,8 @@ from .mms_dam_cleared_energy import MmsDamClearedEnergy
 from .mms_dam_clearing_prices import MmsDamClearingPrices
 from .mms_dam_forecasted_prices import MmsDamFcastedClearingPrices
 from .mms_dam_gen_margin import MmsDamGenMargin
+from .mms_dam_expected_gen_margin import MmsDamExpectedGenMargin
+from .mms_dam_expected_load_margin import MmsDamExpectedLoadMargin
 
 # Market
 from .mms_market_schedule import MmsMarketSchedule
@@ -25,6 +27,8 @@ __all__ = [
     "MmsDamClearingPrices",
     "MmsDamFcastedClearingPrices",
     "MmsDamGenMargin",
+    "MmsDamExpectedGenMargin",
+    "MmsDamExpectedLoadMargin",
     "MmsMarketSchedule",
     "MmsTransactions",
 ]
