@@ -6,6 +6,7 @@ from .baseTableModel import BaseTableModel
 class MmsDamClearingPrices(BaseTableModel):
     __tablename__ = "MMS_DAM_CLEARING_PRICES"
 
+    id: int
     dayTimestamp: str
     clearingPrices: list[dict[str, str | float | None]]
 

@@ -6,6 +6,7 @@ from .baseTableModel import BaseTableModel
 class MmsDamGenMargin(BaseTableModel):
     __tablename__ = "MMS_DAM_GEN_MARGIN"
 
+    id: int
     dayTimestamp: str
     resourceId: int
     totalMargin: float
