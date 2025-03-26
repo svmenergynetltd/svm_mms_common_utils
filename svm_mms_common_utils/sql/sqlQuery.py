@@ -40,6 +40,17 @@ class SQL_Query:
 
         return dict
 
+    def copy(self):
+        return SQL_Query(
+            queryType=self.queryType,
+            rawQuery=self.rawQuery,
+            columns=self.columns,
+            joinTables=self.joinTables,
+            valuesToInsert=self.valuesToInsert,
+            tableName=self.tableName,
+            where=self.where,
+        )
+
     def get_sql(self):
         self.compile_sql()
         return self.rawQuery
