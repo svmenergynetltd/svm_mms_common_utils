@@ -11,6 +11,7 @@ class ResourceObject:
     mmsId: str
     fmStrategy: float
     damStrategy: str
+    damStrategyHolidays: str
     participantId: int
     type: ResourceTypes
 
@@ -23,6 +24,7 @@ class ResourceObject:
             "mmsId": self.mmsId,
             "fmStrategy": self.fmStrategy,
             "damStrategy": self.damStrategy,
+            "damStrategyHolidays": self.damStrategyHolidays,
             "participantId": self.participantId,
             "type": self.type.value,
         }
@@ -37,6 +39,7 @@ class ResourceObject:
             mmsId=data["mmsId"],
             fmStrategy=data["fmStrategy"],
             damStrategy=data["damStrategy"],
+            damStrategyHolidays=data["damStrategyHolidays"],
             participantId=data["participantId"],
             type=ResourceTypes(data["type"]),
         )
