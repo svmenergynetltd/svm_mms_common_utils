@@ -35,6 +35,10 @@ class SQL_Query:
                 dict["tableName"] = self.tableName
                 dict["columns"] = self.columns
                 dict["valuesToInsert"] = self.valuesToInsert
+            case QueryType.UPDATE:
+                dict["tableName"] = self.tableName
+                dict["valuesToInsert"] = self.valuesToInsert
+                dict["where"] = self.where
             case _:
                 dict["rawQuery"] = self.rawQuery
 
