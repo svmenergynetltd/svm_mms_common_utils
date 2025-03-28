@@ -82,5 +82,14 @@ class SQL_Parser:
 
     @staticmethod
     def getTableName(query: str):
-        tableName = query.split("FROM")[1].split(" ")[1].strip()
-        return tableName
+        try:
+            if query.find("INSERT") != -1:
+                tableName = query.split("INTO")[1].split("(")[0].strip()
+            elif query.find("SELECT") != -1:
+                tableName = query.split("FROM")[1].split(" ")[1].strip()
+            else:
+                tableName = query.split(" ")[1].strip()
+
+            return tableName
+        except:
+            return "UNKNOWN_TABLE"
