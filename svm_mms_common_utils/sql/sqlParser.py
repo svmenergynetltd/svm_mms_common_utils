@@ -19,6 +19,8 @@ class SQL_Parser:
                 return self.__parseSelect()
             case QueryType.INSERT:
                 return self.__parseInsert()
+            case QueryType.DELETE:
+                return self.__parseDelete()
             case _:
                 return self.__defaultParse()
 
@@ -71,6 +73,26 @@ class SQL_Parser:
             tableName=tableName,
             columns=columns,
             valuesToInsert=keyValue.to_dict(orient="records"),
+            rawQuery=self.query,
+        )
+
+    def __parseDelete(self):
+        query = self.query
+
+        tableName = query.split("FROM")[1].split(" ")[1]
+        whereClause = query.split("WHERE")[1].strip()
+
+        # Parse the WHERE clause to get the conditions
+        conditions = whereClause.split("AND")
+        parsedConditions = []
+        for condition in conditions:
+            column, value = condition.split("=")
+            parsedConditions.append({"column": column.strip(), "value": value.strip().strip("'")})
+
+        return SQL_Query(
+            queryType=QueryType.DELETE,
+            tableName=tableName,
+            where=parsedConditions,
             rawQuery=self.query,
         )
 
