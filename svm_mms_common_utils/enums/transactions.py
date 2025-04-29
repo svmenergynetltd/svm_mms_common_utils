@@ -23,5 +23,7 @@ class TrxSubmissionType(BaseEnum):
 
     FM_CONTRACT = "FM_CONTRACT"
     FM_NOMINATION = "FM_NOMINATION"
+    RES_INJECTION = "RES_INJECTION"
+
     DAM_BIDS = "DAM_BIDS"
     DAM_OFFERS = "DAM_OFFERS"
