@@ -154,4 +154,4 @@ class TimeSeriesUtils:
         if columnKey not in series[0].keys():
             raise ValueError(f"Column key {columnKey} not found in series")
 
-        return sum([float(item[columnKey]) for item in series])
+        return sum([float(item[columnKey] or 0) for item in series])
