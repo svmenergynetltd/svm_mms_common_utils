@@ -14,7 +14,6 @@ class MmsRtbmDispatch(BaseTableModel):
 
     def to_db(self):
         return {
-            "id": self.id,
             "resourceId": self.resourceId,
             "dayTimestamp": self.dayTimestamp,
             "dispatchInstructions": self.dispatchInstructions,

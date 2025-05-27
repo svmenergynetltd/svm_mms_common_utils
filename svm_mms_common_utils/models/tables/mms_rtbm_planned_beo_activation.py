@@ -16,7 +16,6 @@ class MmsRtbmPlannedBEOActivations(BaseTableModel):
 
     def to_db(self):
         return {
-            "id": self.id,
             "resourceId": self.resourceId,
             "dayTimestamp": self.dayTimestamp,
             "flowDirection": self.flowDirection,
