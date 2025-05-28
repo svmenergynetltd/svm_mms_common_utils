@@ -12,6 +12,7 @@ class TransactionStatus(BaseEnum):
     CONFIRMED = "CONFIRMED"
     FAILED = "FAILED"
     REJECTED = "REJECTED"
+    REJECT_GATE_CLOSED = "REJECT_GATE_CLOSED"
 
 
 class TrxSubmissionType(BaseEnum):
