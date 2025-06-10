@@ -15,6 +15,7 @@ class MmsMarketSchedule(BaseTableModel):
     @classmethod
     def from_db(cls, data: dict):
         return cls(
+            id=data["id"],
             resourceId=data["resourceId"],
             dayTimestamp=data["dayTimestamp"],
             totalScheduledEnergy=data["totalScheduledEnergy"],
