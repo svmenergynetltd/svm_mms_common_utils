@@ -12,6 +12,9 @@ class ResourceObject:
     fmStrategy: float
     damStrategy: str
     damStrategyHolidays: str
+    rtbmStrategy: str
+    rtbmStrategyHolidays: str
+    rtbmBalEnergyOffers: str
     participantId: int
     type: ResourceTypes
 
@@ -25,6 +28,9 @@ class ResourceObject:
             "fmStrategy": self.fmStrategy,
             "damStrategy": self.damStrategy,
             "damStrategyHolidays": self.damStrategyHolidays,
+            "rtbmStrategy": self.rtbmStrategy,
+            "rtbmStrategyHolidays": self.rtbmStrategyHolidays,
+            "rtbmBalEnergyOffers": self.rtbmBalEnergyOffers,
             "participantId": self.participantId,
             "type": self.type.value,
         }
@@ -40,6 +46,9 @@ class ResourceObject:
             fmStrategy=data["fmStrategy"],
             damStrategy=data["damStrategy"],
             damStrategyHolidays=data["damStrategyHolidays"],
+            rtbmStrategy=data["rtbmStrategy"],
+            rtbmStrategyHolidays=data["rtbmStrategyHolidays"],
+            rtbmBalEnergyOffers=data["rtbmBalEnergyOffers"],
             participantId=data["participantId"],
             type=ResourceTypes(data["type"]),
         )
