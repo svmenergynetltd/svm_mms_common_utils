@@ -10,6 +10,9 @@ class QueryType(Enum):
     DELETE = "DELETE"
     UNKNOWN = "UNKNOWN"
 
+    def __repr__(self):
+        return self.value
+
 
 @dataclass
 class SQL_Query:
