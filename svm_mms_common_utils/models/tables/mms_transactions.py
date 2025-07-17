@@ -27,6 +27,7 @@ class MmsTransactions(BaseTableModel):
     dateReceived: dt.datetime = None
     timeSeries: list[dict] = None
     dateAdded: str = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    dateUpdated: dt.datetime = None
 
     def to_db(self):
         return {
@@ -76,4 +77,5 @@ class MmsTransactions(BaseTableModel):
             resourceObjectId=data["resourceObjectId"],
             timeSeries=data["timeSeries"],
             dateAdded=data["dateAdded"],
+            dateUpdated=data["dateUpdated"],
         )
