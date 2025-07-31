@@ -107,7 +107,11 @@ class SQL_Query:
         if len(self.valuesToInsert) > 1:
             raise ValueError("UPDATE query can only update one row at a time")
 
-        values = [f"{col} = '{val}'" for col, val in self.valuesToInsert[0].items()]
+        values = [
+            f"{col} = '{val if val is not None else 'NULL'}'"
+            for col, val in self.valuesToInsert[0].items()
+        ]
+
         filters = " AND ".join([f"{where['column']} = '{where['value']}'" for where in self.where])
 
         return f"UPDATE {self.tableName} SET {', '.join(values)} WHERE {filters}"
