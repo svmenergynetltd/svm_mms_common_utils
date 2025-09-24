@@ -1,5 +1,5 @@
 import pandas as pd
-
+import pytz
 
 class CommonDataFrames:
 
@@ -15,6 +15,13 @@ class CommonDataFrames:
         Returns:
             pd.DataFrame: A DataFrame with a single column of half-hourly timestamps for the specified day.
         """
-        halfHourly = pd.date_range(today, periods=48, freq="30min")
+        start = pd.to_datetime(today).replace(
+            hour=0, minute=0, second=0, microsecond=0, tzinfo=pytz.timezone("Europe/Athens")
+        )
+        end = pd.to_datetime(today).replace(
+            hour=23, minute=30, second=0, microsecond=0, tzinfo=pytz.timezone("Europe/Athens")
+        )
+        # halfHourly = pd.date_range(today, periods=48, freq="30min")
+        halfHourly = pd.date_range(start=start, end=end, freq="30min")
         df = halfHourly.to_frame(index=False).rename(columns={0: colName})
         return df
