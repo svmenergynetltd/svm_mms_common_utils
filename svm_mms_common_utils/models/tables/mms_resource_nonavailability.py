@@ -11,9 +11,9 @@ class MmsResourceNonAvailability(BaseTableModel):
 
     id: int
     resourceId: int
-    dateRangeStart: dt.datetime
-    dateRangeEnd: dt.datetime
-    nonAvailability: dict[str, str | float | None]
+    startDate: dt.datetime
+    endDate: dt.datetime
+    nonAvailability: float
     type: NonAvailabilityType
     reason: NonAvailabilityReason
     status: str = None
@@ -22,8 +22,8 @@ class MmsResourceNonAvailability(BaseTableModel):
         return {
             "id": self.id,
             "resourceId": self.resourceId,
-            "dateRangeStart": self.dateRangeStart.isoformat() if self.dateRangeStart else None,
-            "dateRangeEnd": self.dateRangeEnd.isoformat() if self.dateRangeEnd else None,
+            "startDate": self.startDate.isoformat() if self.startDate else None,
+            "endDate": self.endDate.isoformat() if self.endDate else None,
             "nonAvailability": self.nonAvailability,
             "type": self.type,
             "reason": self.reason,
@@ -35,8 +35,8 @@ class MmsResourceNonAvailability(BaseTableModel):
         return cls(
             id=data["id"],
             resourceId=data["resourceId"],
-            dateRangeStart=data["dateRangeStart"],
-            dateRangeEnd=data["dateRangeEnd"],
+            startDate=data["startDate"],
+            endDate=data["endDate"],
             nonAvailability=data["nonAvailability"],
             type=NonAvailabilityType.from_name(data["type"]),
             reason=NonAvailabilityReason.from_name(data["reason"]),
