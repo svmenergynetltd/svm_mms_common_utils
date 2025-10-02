@@ -14,6 +14,7 @@ class MmsResourceObjectForecast(BaseTableModel):
     forecast: list[dict[str, str | float | None]]
     totalDayImportEnergy: float
     totalDayExportEnergy: float
+    createdBy: str
 
     def to_db(self):
         return {
@@ -23,6 +24,7 @@ class MmsResourceObjectForecast(BaseTableModel):
             "forecast": self.forecast,
             "totalDayImportEnergy": round(self.totalDayImportEnergy, 3),
             "totalDayExportEnergy": round(self.totalDayExportEnergy, 3),
+            "createdBy": self.createdBy,
         }
 
     @classmethod
@@ -34,4 +36,5 @@ class MmsResourceObjectForecast(BaseTableModel):
             forecast=data["forecast"],
             totalDayImportEnergy=data["totalDayImportEnergy"],
             totalDayExportEnergy=data["totalDayExportEnergy"],
+            createdBy=data["createdBy"],
         )
