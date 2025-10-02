@@ -31,6 +31,9 @@ from .mms_rtbm_planned_mbep import MmsRtbmPlannedMbep
 # Settlements
 from .mms_settlements import MmsSettlements
 
+# Resource Non-Availability
+from .mms_resource_nonavailability import MmsResourceNonAvailability
+
 __all__ = [
     "MmsResourceObjectForecast",
     "MmsForwardContract",
@@ -52,4 +55,5 @@ __all__ = [
     "MmsRtbmPlannedBEOActivations",
     "MmsRtbmPlannedMbep",
     "MmsSettlements",
+    "MmsResourceNonAvailability",
 ]
