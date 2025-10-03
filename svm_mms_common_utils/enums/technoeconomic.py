@@ -16,7 +16,7 @@ class NonAvailabilityType(BaseEnum):
         for member in cls:
             if member.name == name:
                 return member
-        raise ValueError(f"{name} is not a valid {cls.__name__}")
+        return None
 
 
 class NonAvailabilityReason(BaseEnum):
