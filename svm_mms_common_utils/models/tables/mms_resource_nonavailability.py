@@ -39,6 +39,6 @@ class MmsResourceNonAvailability(BaseTableModel):
             endDate=data["endDate"],
             nonAvailability=data["nonAvailability"],
             type=NonAvailabilityType.from_name(data["type"]),
-            reason=NonAvailabilityReason.from_name(data["reason"]),
+            reason=NonAvailabilityReason(data["reason"]),
             status=data.get("status"),
         )

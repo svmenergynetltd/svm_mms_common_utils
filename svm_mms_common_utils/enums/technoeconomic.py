@@ -6,7 +6,7 @@ class BaseEnum(str, Enum):
         return self.value
 
 
-class NonAvailabilityType(str, Enum):
+class NonAvailabilityType(BaseEnum):
     PARTIAL_Z01 = "Z01"
     TOTAL_Z02 = "Z02"
     CANCEL_Z03 = "Z03"
