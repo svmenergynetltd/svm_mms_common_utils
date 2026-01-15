@@ -12,6 +12,7 @@ class MmsResourceObjectForecast(BaseTableModel):
     resourceId: int
     dayTimestamp: dt.date
     forecast: list[dict[str, str | float | None]]
+    subunitForecast: list[dict[str, str | float | None]]
     totalDayImportEnergy: float
     totalDayExportEnergy: float
     createdBy: str
@@ -22,6 +23,7 @@ class MmsResourceObjectForecast(BaseTableModel):
             "resourceId": self.resourceId,
             "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
             "forecast": self.forecast,
+            "subunitForecast": self.subunitForecast,
             "totalDayImportEnergy": round(self.totalDayImportEnergy, 3),
             "totalDayExportEnergy": round(self.totalDayExportEnergy, 3),
             "createdBy": self.createdBy,
@@ -34,6 +36,7 @@ class MmsResourceObjectForecast(BaseTableModel):
             resourceId=data["resourceId"],
             dayTimestamp=data["dayTimestamp"],
             forecast=data["forecast"],
+            subunitForecast=data["subunitForecast"],
             totalDayImportEnergy=data["totalDayImportEnergy"],
             totalDayExportEnergy=data["totalDayExportEnergy"],
             createdBy=data["createdBy"],
