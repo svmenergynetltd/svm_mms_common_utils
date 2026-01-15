@@ -16,8 +16,8 @@ class ResourceObject:
     rtbmStrategyHolidays: str
     rtbmBalEnergyOffers: str
     participantId: int
-    parentResourceId: int | None = None
     type: ResourceTypes
+    parentResourceId: int | None = None
 
     def to_db(self):
         return {
@@ -33,8 +33,8 @@ class ResourceObject:
             "rtbmStrategyHolidays": self.rtbmStrategyHolidays,
             "rtbmBalEnergyOffers": self.rtbmBalEnergyOffers,
             "participantId": self.participantId,
-            "parentResourceId": self.parentResourceId,
             "type": self.type.value,
+            "parentResourceId": self.parentResourceId,
         }
 
     @classmethod
@@ -52,6 +52,6 @@ class ResourceObject:
             rtbmStrategyHolidays=data["rtbmStrategyHolidays"],
             rtbmBalEnergyOffers=data["rtbmBalEnergyOffers"],
             participantId=data["participantId"],
-            parentResourceId=data["parentResourceId"],
             type=ResourceTypes(data["type"]),
+            parentResourceId=data["parentResourceId"],
         )
