@@ -11,3 +11,5 @@ from .transactions import TransactionStatus, TrxSubmissionType
 from .stat import SettlDocStatus
 
 from .technoeconomic import NonAvailabilityType, NonAvailabilityReason
+
+from .fmmq import FmmqDocStatus
