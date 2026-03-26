@@ -14,6 +14,7 @@ class MmsParticipantFmmq(BaseTableModel):
     fmmqTimeseries: list[dict[str, str | float | None]]
     totalFMMQ: float
     averageFMMQ: float
+    xmlFile: str | None = None
 
     @classmethod
     def from_db(cls, data: dict):
@@ -24,6 +25,7 @@ class MmsParticipantFmmq(BaseTableModel):
             fmmqTimeseries=data["fmmqTimeseries"],
             totalFMMQ=data["totalFMMQ"],
             averageFMMQ=data["averageFMMQ"],
+            xmlFile=data.get("xmlFile"),
         )
 
     def to_db(self):
@@ -34,4 +36,5 @@ class MmsParticipantFmmq(BaseTableModel):
             "fmmqTimeseries": self.fmmqTimeseries,
             "totalFMMQ": round(self.totalFMMQ, 3),
             "averageFMMQ": round(self.averageFMMQ, 3),
+            "xmlFile": self.xmlFile,
         }
