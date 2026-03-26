@@ -3,6 +3,7 @@ from .mms_resource_object_forecast import MmsResourceObjectForecast
 # FM
 from .mms_forward_contracts import MmsForwardContract
 from .mms_physical_nominations import MmsPhysicalNomination
+from .mms_participant_fmmq import MmsParticipantFmmq
 
 # DAM
 from .mms_dam_bids_offers import MmsDamBidsOffers
@@ -38,6 +39,7 @@ __all__ = [
     "MmsResourceObjectForecast",
     "MmsForwardContract",
     "MmsPhysicalNomination",
+    "MmsParticipantFmmq",
     "MmsDamBidsOffers",
     "MmsDamClearedEnergy",
     "MmsDamClearingPrices",
