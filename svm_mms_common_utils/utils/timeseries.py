@@ -1,9 +1,15 @@
 from svm_mms_common_utils.enums import PowerUnits
 from svm_mms_common_utils.constants import MMS_CONSTANTS
 from svm_mms_common_utils.utils import DateUtils
-from typing import List
+from typing import List, TypedDict
 import pandas as pd
 import datetime as dt
+
+
+class CurtailedTimeseries(TypedDict):
+    timeseries_id: str
+    timestamp_index: int
+    quantity: float
 
 
 class TimeSeriesUtils:
@@ -155,3 +161,28 @@ class TimeSeriesUtils:
             raise ValueError(f"Column key {columnKey} not found in series")
 
         return sum([float(item[columnKey] or 0) for item in series])
+
+    @staticmethod
+    def apply_curtailed_quantities(
+        series: list[dict[str, any]],
+        curtailedQuantities: list[CurtailedTimeseries],
+        value_key: str = "quantity",
+    ) -> list[dict[str, any]]:
+        """Apply curtailed quantities to a time series.
+
+        :param series: A list of dictionaries containing the series, assumes a 'timestamp' and `value_key` keys.
+        :type series: list[dict[str, Any]]
+        :param curtailedQuantities: A list of curtailed quantities to apply.
+        :type curtailedQuantities: list[CurtailedTimeseries]
+        :param value_key: The key of the value to update in the series.
+        :type value_key: str
+
+        :return: The series with the curtailed quantities applied.
+        """
+        for curtailed in curtailedQuantities:
+            # Find the point in the series with the same timestamp index
+            index = int(curtailed["timestamp_index"]) - 1  # Assuming timestamp_index is 1-based
+            if 0 <= index < len(series):
+                series[index][value_key] = curtailed["quantity"]
+
+        return series
