@@ -201,7 +201,7 @@ class TimeSeriesUtils:
         """
         for point in series:
             if key in point:
-                if isinstance(point[key], dt.datetime):
+                if isinstance(point[key], dt.datetime) or isinstance(point[key], pd.Timestamp):
                     point[key] = point[key].isoformat()
 
         return series
