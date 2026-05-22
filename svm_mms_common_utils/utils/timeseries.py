@@ -69,8 +69,9 @@ class TimeSeriesUtils:
         """
         Returns the start and end dates of the time series, as UTC strings.
         """
-        startDt = pd.to_datetime(series[0][key])
-        endDt = pd.to_datetime(series[-1][key]) + dt.timedelta(minutes=30)
+        series_copy = [point.copy() for point in series]
+        startDt = pd.to_datetime(series_copy[0][key])
+        endDt = pd.to_datetime(series_copy[-1][key]) + dt.timedelta(minutes=30)
         startDate = DateUtils.convertDateToUTC(date=startDt, initialTz=True)
         endDate = DateUtils.convertDateToUTC(date=endDt, initialTz=True)
 
