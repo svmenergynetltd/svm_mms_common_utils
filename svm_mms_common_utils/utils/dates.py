@@ -2,6 +2,7 @@ import datetime as dt
 from typing import TypedDict
 from typing_extensions import Unpack
 import pytz
+import pandas as pd
 
 
 class IntervalKwargs(TypedDict):
@@ -169,3 +170,17 @@ class DateUtils:
             raise ValueError(
                 "Invalid date format, date should be in the format of 'YYYY-MM-DDTHH:MMZ'"
             )
+
+    @staticmethod
+    def convert_to_correct_tz(date_time: dt.datetime, local_tz: str = "Europe/Athens"):
+        """Convert a datetime object to the application's local timezone.
+        Args:
+            date_time (datetime.datetime): The datetime object to convert.
+        Returns:
+            datetime.datetime: The converted datetime object in the local timezone.
+        """
+        if isinstance(date_time, pd.Timestamp):
+            date_time = date_time.to_pydatetime()
+        # if datetime is naive or in a different timezone, convert it to
+        # local_tz
+        return date_time.astimezone(pytz.timezone(local_tz))
