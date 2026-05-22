@@ -187,3 +187,21 @@ class TimeSeriesUtils:
                 series[index][value_key] = curtailed["quantity"]
 
         return series
+
+    @staticmethod
+    def isoformat_series(series: List[dict[str, any]], key="timestamp") -> List[dict[str, any]]:
+        """Convert the timestamp of a series to ISO format.
+
+        :param series: A list of dictionaries containing the series, assumes a `key` for timestamps.
+        :type series: list[dict[str, Any]]
+        :param key: The key of the timestamp to convert.
+        :type key: str
+
+        :return: The series with the timestamps in ISO format.
+        """
+        for point in series:
+            if key in point:
+                if isinstance(point[key], dt.datetime):
+                    point[key] = point[key].isoformat()
+
+        return series
