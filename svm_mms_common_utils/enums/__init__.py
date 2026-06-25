@@ -2,7 +2,9 @@ from .units import PowerUnits
 
 from .entities import ResourceTypes
 
-from .fm import NominationType, ContractStatus, DamBidsOffersTypes, RtbmFlowDirection
+from .fm import NominationType, ContractStatus, RtbmFlowDirection
+
+from .dam import DamBidsOffersTypes, DamPricingStrategyTypes
 
 from .tsoc import TsocDocType, MridMarketAbbr
 

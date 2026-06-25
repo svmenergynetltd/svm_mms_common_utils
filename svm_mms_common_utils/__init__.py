@@ -1,3 +1,3 @@
 __title__ = "svm_mms_common_utils"
-__version__ = "0.1.9a3"
+__version__ = "0.2.0"
 __url__ = "https://github.com/svmenergynetltd/svm_mms_common_utils"
