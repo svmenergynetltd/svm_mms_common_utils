@@ -13,8 +13,10 @@ class MmsDamBidsOffers(BaseTableModel):
     dayTimestamp: dt.date
     businessType: DamBidsOffersTypes
     totalQuantity: float
-    bidsAndOffers: list[dict[str, str | float | None]]
+    quantities: list[dict[str, str | float | None]]
+    pricingStrategy: dict[str, str | float | None]
     createdBy: str
+    pricesCreatedBy: str
 
     def to_db(self):
         return {
@@ -23,8 +25,10 @@ class MmsDamBidsOffers(BaseTableModel):
             "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
             "businessType": self.businessType,
             "totalQuantity": round(self.totalQuantity, 3),
-            "bidsAndOffers": self.bidsAndOffers,
+            "quantities": self.quantities,
+            "pricingStrategy": self.pricingStrategy,
             "createdBy": self.createdBy,
+            "pricesCreatedBy": self.pricesCreatedBy,
         }
 
     @classmethod
@@ -35,6 +39,8 @@ class MmsDamBidsOffers(BaseTableModel):
             dayTimestamp=data["dayTimestamp"],
             businessType=DamBidsOffersTypes[data["businessType"]],
             totalQuantity=data["totalQuantity"],
-            bidsAndOffers=data["bidsAndOffers"],
+            quantities=data["quantities"],
+            pricingStrategy=data["pricingStrategy"],
             createdBy=data["createdBy"],
+            pricesCreatedBy=data["pricesCreatedBy"],
         )

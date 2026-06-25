@@ -11,12 +11,6 @@ class NominationType(BaseEnum):
     DELIVERY = "DELIVERY"
 
 
-class DamBidsOffersTypes(BaseEnum):
-    SIMPLE_BIDS = "SIMPLE_BIDS"
-    SIMPLE_OFFER = "SIMPLE_OFFER"
-    BLOCK_OFFER = "BLOCK_OFFER"
-
-
 class RtbmFlowDirection(BaseEnum):
     UP = "UP"
     DOWN = "DOWN"
