@@ -1,6 +1,7 @@
 import pandas as pd
 from ast import literal_eval
 from .sqlQuery import QueryType, SQL_Query
+import re
 
 
 class SQL_Parser:
@@ -103,15 +104,38 @@ class SQL_Parser:
         )
 
     @staticmethod
-    def getTableName(query: str):
-        try:
-            if query.find("INSERT") != -1:
-                tableName = query.split("INTO")[1].split("(")[0].strip()
-            elif query.find("SELECT") != -1:
-                tableName = query.split("FROM")[1].split(" ")[1].strip()
-            else:
-                tableName = query.split(" ")[1].strip()
+    def getTableName(query: str) -> str:
+        if not query:
+            return "UNKNOWN_TABLE"
 
-            return tableName
-        except:
+        # Normalize whitespace
+        q = " ".join(query.strip().split())
+        q_upper = q.upper()
+
+        try:
+            # INSERT INTO table (...)
+            if q_upper.startswith("INSERT"):
+                match = re.search(r"INSERT\s+INTO\s+([^\s(]+)", q_upper)
+                return match.group(1) if match else "UNKNOWN_TABLE"
+
+            # SELECT ... FROM table ...
+            if q_upper.startswith("SELECT"):
+                match = re.search(r"FROM\s+([^\s]+)", q_upper)
+                return match.group(1) if match else "UNKNOWN_TABLE"
+
+            # UPDATE table SET ...
+            if q_upper.startswith("UPDATE"):
+                match = re.search(r"UPDATE\s+([^\s]+)", q_upper)
+                return match.group(1) if match else "UNKNOWN_TABLE"
+
+            # DELETE FROM table ...
+            if q_upper.startswith("DELETE"):
+                match = re.search(r"DELETE\s+FROM\s+([^\s]+)", q_upper)
+                return match.group(1) if match else "UNKNOWN_TABLE"
+
+            # Fallback: second token
+            parts = q_upper.split(" ")
+            return parts[1] if len(parts) > 1 else "UNKNOWN_TABLE"
+
+        except Exception:
             return "UNKNOWN_TABLE"

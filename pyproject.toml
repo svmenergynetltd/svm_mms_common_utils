@@ -4,7 +4,7 @@ description = "Common utilities for SVM MMS applications"
 authors = [{ name = "Konstantinos A.", email = "konstantinos.a@svmenergy.net" }]
 readme = "README.md"
 dynamic = ["version", "dependencies"]
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 
 [tool.setuptools.dynamic]
 version = { attr = "svm_mms_common_utils.__version__" }
