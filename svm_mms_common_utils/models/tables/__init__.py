@@ -18,7 +18,6 @@ from .mms_dam_expected_load_margin import MmsDamExpectedLoadMargin
 from .mms_market_schedule import MmsMarketSchedule
 from .mms_transactions import MmsTransactions
 
-
 # Rtbm
 from .mms_rtbm_balancing_energy_offers import MmsRtbmBalancingEnergyOffers
 from .mms_rtbm_beo_awards import MmsRtbmBeoAwards
@@ -27,7 +26,8 @@ from .mms_rtbm_indicative_disp import MmsRtbmIndicativeDisp
 from .mms_rtbm_mbep import MmsRtbmMbep
 from .mms_rtbm_planned_beo_activation import MmsRtbmPlannedBEOActivations
 from .mms_rtbm_planned_mbep import MmsRtbmPlannedMbep
-
+from .mms_rtbm_reserve_capacity_offers import MmsRtbmReserveCapacityOffers
+from .mms_rtbm_marg_reserve_prices import MmsRtbmMargReservePrices
 
 # Settlements
 from .mms_settlements import MmsSettlements
@@ -56,6 +56,8 @@ __all__ = [
     "MmsRtbmMbep",
     "MmsRtbmPlannedBEOActivations",
     "MmsRtbmPlannedMbep",
+    "MmsRtbmReserveCapacityOffers",
+    "MmsRtbmMargReservePrices",
     "MmsSettlements",
     "MmsResourceNonAvailability",
 ]

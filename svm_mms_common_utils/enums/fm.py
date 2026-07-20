@@ -11,11 +11,6 @@ class NominationType(BaseEnum):
     DELIVERY = "DELIVERY"
 
 
-class RtbmFlowDirection(BaseEnum):
-    UP = "UP"
-    DOWN = "DOWN"
-
-
 class ContractStatus(BaseEnum):
     PENDING = "PENDING"
     ACKNOWLEDGED = "ACKNOWLEDGED"
