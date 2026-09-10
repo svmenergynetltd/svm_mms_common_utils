@@ -13,8 +13,10 @@ class MmsRtbmReserveCapacityOffers(BaseTableModel):
     processType: RtbmReserveProcessType
     flowDirection: RtbmFlowDirection
     totalQuantity: float
-    reserveCapacity: list[dict[str, str | float | None]]
+    quantities: list[dict[str, str | float | None]]
+    pricingStrategy: dict[str, str | float | None]
     createdBy: str
+    pricesCreatedBy: str
 
     def to_db(self):
         return {
@@ -24,8 +26,10 @@ class MmsRtbmReserveCapacityOffers(BaseTableModel):
             "processType": self.processType,
             "flowDirection": self.flowDirection,
             "totalQuantity": round(self.totalQuantity, 3),
-            "reserveCapacity": self.reserveCapacity,
+            "quantities": self.quantities,
+            "pricingStrategy": self.pricingStrategy,
             "createdBy": self.createdBy,
+            "pricesCreatedBy": self.pricesCreatedBy,
         }
 
     @classmethod
@@ -37,6 +41,8 @@ class MmsRtbmReserveCapacityOffers(BaseTableModel):
             processType=RtbmReserveProcessType[data["processType"]],
             flowDirection=RtbmFlowDirection[data["flowDirection"]],
             totalQuantity=data["totalQuantity"],
-            reserveCapacity=data["reserveCapacity"],
+            quantities=data["quantities"],
+            pricingStrategy=data["pricingStrategy"],
             createdBy=data["createdBy"],
+            pricesCreatedBy=data["pricesCreatedBy"],
         )

@@ -35,3 +35,8 @@ class RtbmReserveProcessType(BaseEnum):
                 return cls.aFRR
             case "A97":
                 return cls.mFRR
+
+
+class RtbmPricingStrategyTypes(BaseEnum):
+    FIXED_PRICE = "fixedPrice"
+    VARIABLE_PRICE = "variablePrice"

@@ -6,7 +6,7 @@ from .fm import NominationType, ContractStatus
 
 from .dam import DamBidsOffersTypes, DamPricingStrategyTypes
 
-from .rtbm import RtbmFlowDirection, RtbmReserveProcessType
+from .rtbm import RtbmFlowDirection, RtbmReserveProcessType, RtbmPricingStrategyTypes
 
 from .tsoc import TsocDocType, MridMarketAbbr
 
