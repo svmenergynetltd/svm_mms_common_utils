@@ -12,17 +12,23 @@ class MmsRtbmBalancingEnergyOffers(BaseTableModel):
     dayTimestamp: str
     flowDirection: RtbmFlowDirection
     totalQuantity: float
-    balancingEnergy: list[dict[str, str | float | None]]
+    quantities: list[dict[str, str | float | None]]
+    pricingStrategy: dict[str, str | float | None]
     createdBy: str
+    pricesCreatedBy: str
 
     def to_db(self):
         return {
             "resourceId": self.resourceId,
-            "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
+            "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d")
+            if self.dayTimestamp
+            else None,
             "flowDirection": self.flowDirection,
             "totalQuantity": round(self.totalQuantity, 3),
-            "balancingEnergy": self.balancingEnergy,
+            "quantities": self.quantities,
+            "pricingStrategy": self.pricingStrategy,
             "createdBy": self.createdBy,
+            "pricesCreatedBy": self.pricesCreatedBy,
         }
 
     @classmethod
@@ -33,6 +39,8 @@ class MmsRtbmBalancingEnergyOffers(BaseTableModel):
             flowDirection=RtbmFlowDirection[data["flowDirection"]],
             dayTimestamp=data["dayTimestamp"],
             totalQuantity=data["totalQuantity"],
-            balancingEnergy=data["balancingEnergy"],
+            quantities=data["quantities"],
+            pricingStrategy=data["pricingStrategy"],
             createdBy=data["createdBy"],
+            pricesCreatedBy=data["pricesCreatedBy"],
         )
