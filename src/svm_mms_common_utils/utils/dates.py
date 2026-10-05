@@ -193,3 +193,11 @@ class DateUtils:
         # if datetime is naive or in a different timezone, convert it to
         # local_tz
         return date_time.astimezone(pytz.timezone(local_tz))
+
+    @staticmethod
+    def get_date_to_db(date: str | dt.date | dt.datetime | pd.Timestamp | None):
+        if date is None:
+            return None
+        if isinstance(date, (dt.datetime, dt.date, pd.Timestamp)):
+            return date.strftime("%Y-%m-%d")
+        return date

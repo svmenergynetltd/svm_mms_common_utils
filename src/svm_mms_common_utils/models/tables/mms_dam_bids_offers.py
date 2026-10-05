@@ -2,6 +2,7 @@ import datetime as dt
 from dataclasses import dataclass
 
 from svm_mms_common_utils.enums import DamBidsOffersTypes
+from svm_mms_common_utils.utils.dates import DateUtils
 
 from .base_table_model import BaseTableModel
 
@@ -12,7 +13,7 @@ class MmsDamBidsOffers(BaseTableModel):
 
     id: int | None
     resourceId: int
-    dayTimestamp: dt.date
+    dayTimestamp: str | dt.date
     businessType: DamBidsOffersTypes
     totalQuantity: float
     quantities: list[dict[str, str | float | None]]
@@ -23,7 +24,7 @@ class MmsDamBidsOffers(BaseTableModel):
     def to_db(self):
         return {
             "resourceId": self.resourceId,
-            "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
+            "dayTimestamp": DateUtils.get_date_to_db(self.dayTimestamp),
             "businessType": self.businessType,
             "totalQuantity": round(self.totalQuantity, 3),
             "quantities": self.quantities,

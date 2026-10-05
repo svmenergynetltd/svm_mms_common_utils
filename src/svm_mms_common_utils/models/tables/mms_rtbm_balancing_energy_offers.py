@@ -2,6 +2,7 @@ import datetime as dt
 from dataclasses import dataclass
 
 from svm_mms_common_utils.enums import RtbmFlowDirection
+from svm_mms_common_utils.utils.dates import DateUtils
 
 from .base_table_model import BaseTableModel
 
@@ -12,7 +13,7 @@ class MmsRtbmBalancingEnergyOffers(BaseTableModel):
 
     id: int | None
     resourceId: int
-    dayTimestamp: str | dt.datetime
+    dayTimestamp: str | dt.date
     flowDirection: RtbmFlowDirection
     totalQuantity: float
     quantities: list[dict[str, str | float | None]]
@@ -23,9 +24,7 @@ class MmsRtbmBalancingEnergyOffers(BaseTableModel):
     def to_db(self):
         return {
             "resourceId": self.resourceId,
-            "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d")
-            if self.dayTimestamp and isinstance(self.dayTimestamp, dt.datetime)
-            else None,
+            "dayTimestamp": DateUtils.get_date_to_db(self.dayTimestamp),
             "flowDirection": self.flowDirection,
             "totalQuantity": round(self.totalQuantity, 3),
             "quantities": self.quantities,
