@@ -1,15 +1,17 @@
+import datetime as dt
+
 import pandas as pd
 import pytz
 
 
 class CommonDataFrames:
     @staticmethod
-    def create_empty_timestamp_df(today: str, colName: str = "timestamp") -> pd.DataFrame:
+    def create_empty_timestamp_df(today: str | dt.date, colName: str = "timestamp") -> pd.DataFrame:
         """
         Creates an empty DataFrame with a timestamp column containing half-hourly intervals for a given day.
 
         Parameters:
-            today (str): The starting date in the format 'YYYY-MM-DD'.
+            today (str | dt.date): The starting date in the format 'YYYY-MM-DD'.
             colName (str, optional): The name of the timestamp column. Defaults to "timestamp".
 
         Returns:
