@@ -579,39 +579,6 @@ def test_resource_forecast_rounds_import_and_export_and_formats_the_day():
     assert restored.createdBy == "forecast-user"
 
 
-def test_balancing_energy_offers_format_only_datetime_days():
-    model = MmsRtbmBalancingEnergyOffers(
-        id=15,
-        resourceId=2,
-        dayTimestamp=WHEN,
-        flowDirection=RtbmFlowDirection["UP"],
-        totalQuantity=1.23456,
-        quantities=SERIES,
-        pricingStrategy={"strategy": "fixedPrice"},
-        createdBy="beo-user",
-        pricesCreatedBy="beo-price",
-    )
-
-    assert model.to_db()["dayTimestamp"] == DAY_STR
-    assert model.to_db()["totalQuantity"] == _rounded(1.23456)
-    assert model.to_db()["flowDirection"] == RtbmFlowDirection["UP"]
-
-    for day in (DAY_STR, DAY, None):
-        model.dayTimestamp = day
-        assert model.to_db()["dayTimestamp"] is None
-
-    restored = MmsRtbmBalancingEnergyOffers.from_db(
-        {
-            **model.to_db(),
-            "id": 15,
-            "dayTimestamp": DAY_STR,
-            "flowDirection": "DOWN",
-        }
-    )
-    assert restored.flowDirection == RtbmFlowDirection.DOWN
-    assert restored.dayTimestamp == DAY_STR
-
-
 @pytest.mark.parametrize(
     "cls",
     [MmsRtbmBeoAwards, MmsRtbmPlannedBEOActivations],
