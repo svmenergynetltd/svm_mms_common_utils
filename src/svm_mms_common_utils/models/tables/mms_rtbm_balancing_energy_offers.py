@@ -10,7 +10,7 @@ from .base_table_model import BaseTableModel
 class MmsRtbmBalancingEnergyOffers(BaseTableModel):
     __tablename__ = "MMS_RTBM_BALANCING_ENERGY_OFFERS"
 
-    id: int
+    id: int | None
     resourceId: int
     dayTimestamp: str | dt.datetime
     flowDirection: RtbmFlowDirection

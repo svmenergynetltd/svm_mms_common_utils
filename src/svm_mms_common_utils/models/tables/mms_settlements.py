@@ -10,7 +10,7 @@ from .base_table_model import BaseTableModel
 class MmsSettlements(BaseTableModel):
     __tablename__ = "MMS_SETTLEMENTS"
 
-    id: int
+    id: int | None
     dayTimestamp: dt.date
     participantId: int
     resourceId: int
@@ -24,7 +24,6 @@ class MmsSettlements(BaseTableModel):
 
     def to_db(self):
         return {
-            "id": self.id,
             "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d"),
             "participantId": self.participantId,
             "resourceId": self.resourceId,

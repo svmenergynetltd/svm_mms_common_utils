@@ -9,7 +9,7 @@ from .base_table_model import BaseTableModel
 class MmsRtbmBeoAwards(BaseTableModel):
     __tablename__ = "MMS_RTBM_BEO_AWARDS"
 
-    id: int
+    id: int | None
     resourceId: int
     dayTimestamp: str
     flowDirection: RtbmFlowDirection

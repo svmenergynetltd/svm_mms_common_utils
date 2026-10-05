@@ -7,7 +7,7 @@ from .base_table_model import BaseTableModel
 class MmsMarketSchedule(BaseTableModel):
     __tablename__ = "MMS_MARKET_SCHEDULE"
 
-    id: int
+    id: int | None
     resourceId: int
     dayTimestamp: str
     totalScheduledEnergy: float

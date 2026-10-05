@@ -8,7 +8,7 @@ from .base_table_model import BaseTableModel
 class MmsResourceObjectForecast(BaseTableModel):
     __tablename__ = "MMS_RESOURCE_OBJECT_FORECAST"
 
-    id: int
+    id: int | None
     resourceId: int
     dayTimestamp: dt.date
     forecast: list[dict[str, str | float | None]]
@@ -19,7 +19,6 @@ class MmsResourceObjectForecast(BaseTableModel):
 
     def to_db(self):
         return {
-            "id": self.id,
             "resourceId": self.resourceId,
             "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
             "forecast": self.forecast,

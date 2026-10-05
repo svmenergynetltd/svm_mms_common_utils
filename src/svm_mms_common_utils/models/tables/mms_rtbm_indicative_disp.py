@@ -7,7 +7,7 @@ from .base_table_model import BaseTableModel
 class MmsRtbmIndicativeDisp(BaseTableModel):
     __tablename__ = "MMS_RTBM_INDICATIVE_DISP"
 
-    id: int
+    id: int | None
     resourceId: int
     dayTimestamp: str
     indicativeDispSchedule: list[dict[str, str | float | None]]

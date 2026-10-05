@@ -7,7 +7,7 @@ from .base_table_model import BaseTableModel
 class MmsRtbmDispatch(BaseTableModel):
     __tablename__ = "MMS_RTBM_DISPATCH"
 
-    id: int
+    id: int | None
     resourceId: int
     dayTimestamp: str
     dispatchInstructions: list[dict[str, str | float | None]]

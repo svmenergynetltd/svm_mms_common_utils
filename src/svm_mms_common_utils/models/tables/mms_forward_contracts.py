@@ -10,7 +10,7 @@ from .base_table_model import BaseTableModel
 class MmsForwardContract(BaseTableModel):
     __tablename__ = "MMS_FORWARD_CONTRACTS"
 
-    id: int
+    id: int | None
     inParticipantId: int
     outParticipantId: int
     marketAgreementMRID: str
@@ -22,7 +22,6 @@ class MmsForwardContract(BaseTableModel):
 
     def to_db(self):
         return {
-            "id": self.id,
             "inParticipantId": self.inParticipantId,
             "outParticipantId": self.outParticipantId,
             "marketAgreementMRID": self.marketAgreementMRID,

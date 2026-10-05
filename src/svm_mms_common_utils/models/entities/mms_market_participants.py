@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 @dataclass
 class MarketParticipant:
-    id: int
+    id: int | None
     mRID: str
     participantName: str
     participantDisplayName: str

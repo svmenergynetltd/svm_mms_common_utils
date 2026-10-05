@@ -10,7 +10,7 @@ from .base_table_model import BaseTableModel
 class MmsDamBidsOffers(BaseTableModel):
     __tablename__ = "MMS_DAM_BIDS_AND_OFFERS"
 
-    id: int
+    id: int | None
     resourceId: int
     dayTimestamp: dt.date
     businessType: DamBidsOffersTypes
@@ -22,7 +22,6 @@ class MmsDamBidsOffers(BaseTableModel):
 
     def to_db(self):
         return {
-            "id": self.id,
             "resourceId": self.resourceId,
             "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
             "businessType": self.businessType,

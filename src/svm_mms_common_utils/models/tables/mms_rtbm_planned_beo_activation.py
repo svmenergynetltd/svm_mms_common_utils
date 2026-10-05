@@ -9,7 +9,7 @@ from .base_table_model import BaseTableModel
 class MmsRtbmPlannedBEOActivations(BaseTableModel):
     __tablename__ = "MMS_RTBM_PLANNED_BEO_ACTIVATION"
 
-    id: int
+    id: int | None
     resourceId: int
     dayTimestamp: str
     flowDirection: RtbmFlowDirection

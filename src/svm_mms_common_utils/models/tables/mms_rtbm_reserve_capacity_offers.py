@@ -9,7 +9,7 @@ from .base_table_model import BaseTableModel
 class MmsRtbmReserveCapacityOffers(BaseTableModel):
     __tablename__ = "MMS_RTBM_RESERVE_CAPACITY_OFFERS"
 
-    id: int
+    id: int | None
     resourceId: int
     dayTimestamp: str
     processType: RtbmReserveProcessType
@@ -22,7 +22,6 @@ class MmsRtbmReserveCapacityOffers(BaseTableModel):
 
     def to_db(self):
         return {
-            "id": self.id,
             "resourceId": self.resourceId,
             "dayTimestamp": self.dayTimestamp,
             "processType": self.processType,

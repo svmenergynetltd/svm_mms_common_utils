@@ -9,7 +9,7 @@ from .base_table_model import BaseTableModel
 class MmsTransactions(BaseTableModel):
     __tablename__ = "MMS_TRANSACTIONS"
 
-    id: int
+    id: int | None
     submissionType: TrxSubmissionType
     participantId: int
     resourceObjectId: int

@@ -10,7 +10,7 @@ from .base_table_model import BaseTableModel
 class MmsResourceNonAvailability(BaseTableModel):
     __tablename__ = "MMS_RESOURCE_NON_AVAILABILITY"
 
-    id: int
+    id: int | None
     resourceId: int
     startDate: dt.datetime
     endDate: dt.datetime
@@ -21,7 +21,6 @@ class MmsResourceNonAvailability(BaseTableModel):
 
     def to_db(self):
         return {
-            "id": self.id,
             "resourceId": self.resourceId,
             "startDate": self.startDate.isoformat() if self.startDate else None,
             "endDate": self.endDate.isoformat() if self.endDate else None,

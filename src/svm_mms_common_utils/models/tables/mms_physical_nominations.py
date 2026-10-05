@@ -10,7 +10,7 @@ from .base_table_model import BaseTableModel
 class MmsPhysicalNomination(BaseTableModel):
     __tablename__ = "MMS_PHYSICAL_NOMINATIONS"
 
-    id: int
+    id: int | None
     dayTimestamp: dt.date
     resourceId: int
     nomination: list[dict[str, str | float | None]]
@@ -20,7 +20,6 @@ class MmsPhysicalNomination(BaseTableModel):
 
     def to_db(self):
         return {
-            "id": self.id,
             "dayTimestamp": self.dayTimestamp.strftime("%Y-%m-%d") if self.dayTimestamp else None,
             "resourceId": self.resourceId,
             "nomination": self.nomination,

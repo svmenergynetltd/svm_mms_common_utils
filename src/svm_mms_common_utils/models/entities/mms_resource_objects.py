@@ -5,7 +5,7 @@ from ...enums import ResourceTypes
 
 @dataclass
 class ResourceObject:
-    id: int
+    id: int | None
     name: str
     displayName: str
     mRID: str
