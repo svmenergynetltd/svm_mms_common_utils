@@ -6,7 +6,7 @@ import pytz
 from typing_extensions import Unpack
 
 
-class IntervalKwargs(TypedDict):
+class IntervalKwargs(TypedDict, total=False):
     days: int
     seconds: int
     microseconds: int
